@@ -2,22 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>KindCycle - Donate & Find Causes in Ireland</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KindCycle - Give New Life to Unused Treasures in Ireland</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* --- Renk Paleti (İrlanda Cozy Teması) --- */
+        /* --- Renk Paleti (Görselden Çıkarılan) --- */
         :root {
-            --color-primary-green: #4C6F4C;   /* Koyu Orman Yeşili */
-            --color-secondary-beige: #f5f5ee; /* Açık Bej Arka Plan */
-            --color-accent-brown: #D39B4E;    /* Kahverengi/Turuncu Vurgu */
+            --color-light-beige: #f5f5ee; /* Açık Bej Arka Plan */
+            --color-dark-green: #4C6F4C;   /* Koyu Orman Yeşili (Alt Kısım) */
             --color-text-dark: #2b2620;
-            --color-text-light: #5b5248;
-            --color-card-light: #fdf9f4;
-            --color-border-light: #e0d4c5;
+            --color-cta-donate: #557A55;   /* Bağış Butonu Yeşili */
+            --color-cta-discover: #D39B4E; /* Keşfet Butonu Turuncusu */
         }
 
         /* --- Genel Stiller --- */
@@ -25,418 +23,297 @@
 
         body {
             font-family: 'Open Sans', sans-serif;
-            background: var(--color-secondary-beige);
+            margin: 0;
+            background-color: var(--color-light-beige);
             color: var(--color-text-dark);
             line-height: 1.6;
-            scroll-behavior: smooth; /* Sayfalar arası geçişi yumuşatır */
         }
 
         h1, h2, h3 {
-            font-family: 'Merriweather', serif;
+            font-family: 'Merriweather', serif; 
             color: var(--color-text-dark);
         }
 
-        .container {
-            max-width: 940px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem 2.5rem;
-        }
-        
-        /* Başlık stili */
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 1rem;
-            color: var(--color-primary-green);
-            border-left: 5px solid var(--color-accent-brown);
-            padding-left: 10px;
-        }
-        
-        /* --- HEADER & NAV --- */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--color-secondary-beige);
-            border-bottom: 1px solid var(--color-border-light);
-            padding-bottom: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo span:first-child {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: var(--color-primary-green); /* Yeşil Logo Metni */
-        }
-
-        .logo span:last-child {
-            font-size: 0.85rem; 
-            color: var(--color-text-light);
-        }
-
-        nav a {
-            margin-left: 1rem;
+        a {
             text-decoration: none;
+            color: inherit;
+        }
+        
+        /* --- 1. Header ve Navigasyon --- */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 5% 10px;
+            background-color: var(--color-light-beige);
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo-text {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-top: 5px;
+        }
+        
+        .logo-bike {
+            /* Bu, görseldeki bisiklet logosunun yer tutucusudur */
+            width: 50px;
+            height: 30px;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cpath fill='%234C6F4C' d='M504 200h-80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h3.4l-31 66c-13.8 29.5-44.5 49-78.4 49H264c-12.3 0-24.3-3.1-34.7-8.7L184 340.9V432c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16V307.7c0-20.9 16.5-38.3 37.3-39.7l93.7-6.2c16.5-1.1 32.8-5.7 47.7-13.5l10.9-5.7c17.5-9.2 27.2-28.7 23.3-48.4C417.4 121.7 392.6 96 362 96h-17.6l10.2 20.4c9.1 18.3 12.3 38.6 9.4 58.6-4.9 33.6-28.9 61.3-60.6 74.3L254.8 301c-6.2 3-12.6 5.8-19.2 8.3L160 336H88c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h11.4c-22.3 43.1-68.9 72-121.4 72C14.3 472 0 457.7 0 440s14.3-32 32-32c32.3 0 61.2-15.3 80.5-38.6l19.8-24.2c.4-.5.8-1 1.2-1.5 13.9-18.4 20.5-40.4 19.3-62.8 0 0 0-.1 0-.1 0-.3.1-.6.1-.9V304c0-26.5 21.5-48 48-48h54.8l20.8-10.4c17.7-8.8 30.6-25.5 35.8-45l7.9-29.6c.1-.4.3-.7.4-1.1 4-15.2 3.6-30.9-1.3-45.7C378.8 112.5 368.5 96 352 96h-64V64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32h-64c-22.1 0-40 17.9-40 40v16c0 22.1 17.9 40 40 40h64v32h-43.4c-11.8 0-23.2 2.7-33.5 7.8L96 284.4V256c0-8.8-7.2-16-16-16H0c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v107.5c0 17.7 14.3 32 32 32h128c17.7 0 32-14.3 32-32V304c0-8.8-7.2-16-16-16h-42.9l-11.5-5.7c-9.2-4.6-19.1-7-29-7H224c-17.7 0-32-14.3-32-32V176c0-17.7 14.3-32 32-32h128c17.7 0 32 14.3 32 32v16h80c8.8 0 16-7.2 16-16V216c0-8.8-7.2-16-16-16z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav a {
             color: var(--color-text-dark);
             font-weight: 600;
             transition: color 0.3s;
         }
 
-        nav a:hover { color: var(--color-accent-brown); }
+        .nav a:hover {
+            color: var(--color-cta-discover); 
+        }
 
-        /* --- Ana Sayfa Bölümleri (HOME) --- */
-
-        /* HERO IMAGE */
-        .hero-image {
-            width: 100%;
-            height: 280px; 
-            border-radius: 10px;
-            margin-bottom: 1rem;
+        /* --- 2. Ana Bölüm (Hero Section) --- */
+        .hero-section {
+            /* Arka Plan Görseli: Kullanıcının yüklediği görselin yerini tutar */
+            background-image: url('irlanda-cozy-fireplace-rainbow.jpg'); /* Buraya kendi görselinizi ekleyin */
             background-size: cover;
             background-position: center;
-            /* İrlanda manzara görseli (Unsplash'ten gelen) */
-            background-image: url('https://images.unsplash.com/photo-1579737158309-847253509170?auto=format&fit=crop&q=80&w=1200&h=800'); 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-title {
-            font-size: 2.2rem;
-            margin-bottom: 0.6rem;
-            line-height: 1.2;
-        }
-
-        p { color: var(--color-text-light); margin-bottom: 1rem; }
-
-        /* Button (CTA) */
-        .btn {
-            display: inline-block;
-            padding: 0.7rem 1.6rem;
-            background: var(--color-accent-brown); 
-            color: #fff;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: background 0.3s;
-        }
-
-        .btn:hover { background: #B58853; }
-
-        /* Cards */
-        .card {
-            background: var(--color-card-light);
-            border: 1px solid var(--color-border-light);
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin-top: 0.6rem;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
-        }
-        
-        .donation-images {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.8rem;
-        }
-
-        .don-img {
-            width: 48%;
-            height: 140px;
-            border-radius: 8px;
-            background-size: cover;
-            background-position: center;
-            border: 1px solid #d1c3b4; 
-        }
-
-        .don-img1 { background-image: url('https://images.unsplash.com/photo-1581091870675-1c4c31fd99af?auto=format&fit=crop&w=800&q=60'); }
-        .don-img2 { background-image: url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=800&q=60'); }
-
-        /* Vision image */
-        .vision-image {
-            width: 100%;
-            height: 180px;
-            margin-top: 1rem;
-            border-radius: 8px;
-            background-image: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1100&q=60');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        /* Form Stilleri */
-        .form-box { background: #ffffff; border: 1px solid var(--color-border-light); padding: 1.5rem; border-radius: 8px; }
-        .form-row { display: flex; flex-direction: column; margin-bottom: 1rem; }
-        input, select, textarea { 
-            padding: 0.6rem; 
-            border: 1px solid #d1c3b4; 
-            border-radius: 5px; 
-            background: #fdfaf7; 
-            font-size: 1em;
-            margin-top: 0.3rem;
-        }
-        button.btn { border: none; cursor: pointer; margin-top: 0.5rem;}
-        label { font-weight: 600; color: var(--color-primary-green); }
-
-        /* --- Hakkımızda Bölümleri (ABOUT US) --- */
-        .story-box {
-            background-color: var(--color-card-light);
-            border: 1px solid var(--color-border-light);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .story-box p {
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-
-        .goals-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .goals-list li {
-            background: var(--color-card-light);
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 8px solid var(--color-primary-green);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .goals-list li i {
-            color: var(--color-accent-brown);
-            margin-right: 10px;
-        }
-
-        /* --- Amaç Bul Bölümü (FIND A CAUSE) --- */
-        .cause-search-box {
-            background: var(--color-card-light);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--color-border-light);
-        }
-        
-        .cause-search-box input, .cause-search-box select {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-        
-        .cause-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .cause-item {
-            background: #ffffff;
-            border: 1px solid var(--color-border-light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 5px solid var(--color-accent-brown);
-        }
-
-        .cause-item h3 {
-            margin-top: 0;
-            color: var(--color-primary-green);
-        }
-
-        .cause-item p {
-            margin-bottom: 0.5rem;
-            font-size: 0.95em;
-        }
-
-        .cause-item .btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.9em;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            margin-top: 4rem;
-            border-top: 1px solid var(--color-border-light);
-            padding-top: 1rem;
-            color: #8d7f72;
+            color: white;
             text-align: center;
+            padding: 100px 5%;
+            height: 600px; /* Görseli göstermek için uygun yükseklik */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* Görselin üzerindeki karartma ve metnin netliği için overlay */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.2); 
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1; 
+            max-width: 900px;
+        }
+
+        .hero-content h2 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px; /* Görseldeki sehpa/eşya yığını için boşluk */
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: opacity 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        .donate-btn {
+            background-color: var(--color-cta-donate); /* Koyu yeşil */
+            color: white;
+            border: 2px solid white; /* Hafif çerçeve */
+        }
+
+        .discover-btn {
+            background-color: var(--color-cta-discover); /* Turuncu/Kahverengi tonu */
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        /* --- 3. Alt Bölüm: 3 Özellik Kutusu --- */
+        .features-section {
+            background-color: var(--color-dark-green); /* Koyu yeşil arka plan */
+            color: white;
+            padding: 60px 5%;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .feature-box {
+            max-width: 300px;
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            color: var(--color-cta-discover); /* Turuncu/Kahverengi ikon rengi */
+            margin-bottom: 15px;
+        }
+
+        .feature-box h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        /* İrlandaca benzeri metin için stil */
+        .feature-box p {
             font-size: 0.9em;
+            font-style: italic; 
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* --- 4. Alt Bilgi (Footer) --- */
+        .footer {
+            background-color: var(--color-dark-green);
+            padding: 20px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-newsletter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2em;
+            margin: 0 10px;
+            opacity: 0.8;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-cta-discover);
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input[type="email"] {
+            padding: 8px 10px;
+            border: none;
+            border-radius: 3px 0 0 3px;
+            width: 200px;
+            font-size: 0.9em;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 8px 15px;
+            border: none;
+            background-color: var(--color-cta-discover);
+            color: white;
+            border-radius: 0 3px 3px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .powered-by {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8em;
+            margin-top: 20px;
         }
     </style>
 </head>
-
 <body>
-<div class="container">
 
-    <header>
-        <div class="top-bar">
-            <div class="logo">
-                <span>KindCycle</span>
-                <span style="font-size:0.85rem; color:#7b7269;">Passing on good things across Ireland</span>
-            </div>
-
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#find-cause">Find a Cause</a>
-                <a href="#donate">Donate</a>
-                <a href="#account">Account</a>
-            </nav>
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-bike"></div> <div class="logo-text">KindCycle</div>
         </div>
+        <nav class="nav">
+            <a href="#">Donate Items</a>
+            <a href="#">Find It Works</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </nav>
     </header>
-    
-    <section id="home">
-        <div class="hero-image"></div>
-        <div style="padding: 0 5%;">
-            <h1 class="hero-title">Give unused items a second life in your Irish community.</h1>
-            <p>From Dublin’s coastal towns to Galway’s villages, KindCycle helps good-quality items find new meaning.</p>
 
-            <br>
-            <a href="#donate" class="btn">Donate now <i class="fas fa-arrow-right"></i></a>
+    <main class="hero-section">
+        <div class="hero-content">
+            <h2>Give New Life to Unused Treasures in Ireland</h2>
+            <div class="cta-buttons">
+                <a href="#" class="btn donate-btn"><i class="fas fa-gift"></i> Donate Your Items</a>
+                <a href="#" class="btn discover-btn">Discover Local Causes</a>
+            </div>
+            </div>
+    </main>
+
+    <section class="features-section">
+        <div class="feature-box">
+            <i class="fas fa-box feature-icon"></i>
+            <h3>Reduce Waste</h3>
+            <p>Erato a uper con mestin ae arlamd</p>
         </div>
-
-        <section id="how-it-works" style="margin-top:3rem;">
-            <h2>How KindCycle Works</h2>
-            <div class="card">
-                <ul>
-                    <li>You **offer an item** in good condition.</li>
-                    <li>We **match it** with someone in need in Ireland.</li>
-                    <li>You agree a **collection point** (libraries, community cafés, GAA clubs).</li>
-                </ul>
-
-                <div class="donation-images">
-                    <div class="don-img don-img1"></div>
-                    <div class="don-img don-img2"></div>
-                </div>
-            </div>
-        </section>
-
-        <section style="margin-top:3rem;">
-            <h2>Our Vision & Mission</h2>
-            <div class="vision-image"></div>
-            <div class="grid-2" style="margin-top:1.5rem;">
-                <div class="card">
-                    <h3>Vision</h3>
-                    <p>A kinder Ireland where unused items are recirculated with respect and care.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Mission</h3>
-                    <p>To make giving effortless so items flow through Irish towns and support those who need them most.</p>
-                </div>
-            </div>
-        </section>
-    </section>
-
-    <hr style="margin: 4rem 0; border-color: var(--color-border-light);">
-
-    <section id="about">
-        <h1 style="text-align: center; font-size: 3em; color: var(--color-primary-green); margin-bottom: 2rem;">About KindCycle 🇮🇪</h1>
-        
-        <section id="our-story" style="margin-top:0;">
-            <h2>Our Story: Where Empathy Meets Sustainability</h2>
-            <div class="story-box">
-                <p>KindCycle was founded on a simple Irish principle: **"Ní neart go cur le chéile"** (There is no strength without unity). In Ireland, we value community and we despise waste. We saw an opportunity to bridge the gap between perfectly good items sitting unused in homes and local families or charities who desperately needed them.</p>
-                <p>From our start in a small Dublin community centre, we have grown into a national network, driven entirely by volunteers and the generosity of people like you. We are not just a platform; we are a cycle of kindness, ensuring every item finds a respectful, meaningful second life.</p>
-            </div>
-        </section>
-
-        <section id="mission-goals">
-            <h2>Our Core Goals</h2>
-            <ul class="goals-list">
-                <li><i class="fas fa-bullseye"></i> **Vision:** To create a zero-waste culture in Ireland where all usable goods are recirculated respectfully within local communities.</li>
-                <li><i class="fas fa-handshake"></i> **Mission:** To provide the simplest, most trustworthy platform for connecting donors directly with verified recipients across every town and county.</li>
-                <li><i class="fas fa-leaf"></i> **Impact:** Reduce landfill usage and empower local charities by meeting their material needs immediately.</li>
-            </ul>
-        </section>
-    </section>
-
-    <hr style="margin: 4rem 0; border-color: var(--color-border-light);">
-
-    <section id="find-cause">
-        <h2>Find a Cause Near You</h2>
-        <p>Support local Irish charities and community groups by matching your items to their specific needs. Simply use the filters below.</p>
-        
-        <div class="cause-search-box">
-            <div class="grid-2">
-                <input type="text" placeholder="Search by Town or County (e.g. Galway)">
-                <select>
-                    <option>Filter by Category</option>
-                    <option>Children's/Toys</option>
-                    <option>Clothing & Footwear</option>
-                    <option>Household Goods</option>
-                    <option>Educational/Books</option>
-                </select>
-            </div>
-            <button class="btn" style="width: 100%;">Search Causes <i class="fas fa-search"></i></button>
+        <div class="feature-box">
+            <i class="fas fa-heart feature-icon"></i>
+            <h3>Support Community</h3>
+            <p>Tn oni la dessure the ploise tor trertw leclmp</p>
         </div>
-
-        <h3>Active Local Needs (Examples)</h3>
-        <ul class="cause-list">
-            <li class="cause-item">
-                <h3>Dublin Family Support Centre</h3>
-                <p><i class="fas fa-map-marker-alt"></i> **Dublin City.** Needed: **Winter coats (all sizes) & children's books.**</p>
-                <p>Supports low-income families in the inner city.</p>
-                <a href="#donate" class="btn">Donate to this Cause</a>
-            </li>
-            <li class="cause-item">
-                <h3>Cork Migrant Integration Project</h3>
-                <p><i class="fas fa-map-marker-alt"></i> **Cork County.** Needed: **Small electrical kitchen appliances (kettles, toasters).**</p>
-                <p>Helping new arrivals set up their first homes.</p>
-                <a href="#donate" class="btn">Donate to this Cause</a>
-            </li>
-            <li class="cause-item">
-                <h3>Galway Arts & Education Hub</h3>
-                <p><i class="fas fa-map-marker-alt"></i> **Galway City.** Needed: **Art supplies, laptops, and good-quality easels.**</p>
-                <p>Provides free arts education to disadvantaged youth.</p>
-                <a href="#donate" class="btn">Donate to this Cause</a>
-            </li>
-        </ul>
+        <div class="feature-box">
+            <i class="fas fa-map-marker-alt feature-icon"></i>
+            <h3>Share Joy</h3>
+            <p>Arousse lor scaad to murtald secllue</p>
+        </div>
     </section>
 
-    <hr style="margin: 4rem 0; border-color: var(--color-border-light);">
-
-    <section id="donate">
-        <h2>Donate an Item Today</h2>
-        <p>Your unused item can change someone's day in Ireland. Tell us what you have!</p>
-        <div class="form-box">
-            <form>
-                <div class="form-row"><label>Full name</label><input required></div>
-                <div class="form-row"><label>Email</label><input type="email" required></div>
-                <div class="form-row"><label>Town / County in Ireland</label><input placeholder="e.g. Cork City, Co. Cork" required></div>
-                
-                <div class="form-row">
-                    <label>Category</label>
-                    <select required>
-                        <option>Clothing</option>
-                        <option>Children’s items</option>
-                        <option>Books / School</option>
-                        <option>Household items</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-
-                <div class="form-row">
-                    <label>Description</label>
-                    <textarea required rows="4"></textarea>
-                </div>
-
-                <button class="btn" type="submit">Send donation offer <i class="fas fa-paper-plane"></i></button>
+    <footer class="footer">
+        <div class="social-newsletter">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Newsletter" required>
+                <button type="submit">Youp</button>
             </form>
         </div>
-    </section>
-
-    <footer>
-        © 2025 KindCycle — Community donation project inspired by Ireland. Developed with Irish Spirit.
+        <p class="powered-by">Powered by Irish Spirit</p>
     </footer>
 
-</div>
 </body>
 </html>
