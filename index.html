@@ -78,7 +78,15 @@
         }
 
         .logo-bike {
-            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-bike img {
+            width: 80px;
+            height: auto;
+            display: block;
         }
 
         .logo-text {
@@ -308,12 +316,14 @@
     <!-- HEADER -->
     <header class="header">
         <div class="logo-container">
-            <div class="logo-bike">🚲</div>
+            <div class="logo-bike">
+                <img src="kindcycle-logo.png" alt="KindCycle logo">
+            </div>
             <div class="logo-text">KindCycle</div>
         </div>
         <nav class="nav">
             <a href="#home">Home</a>
-            <a href="#vision-mission">Vision & Mission</a>
+            <a href="#vision-mission">Vision &amp; Mission</a>
             <a href="#donate-form">Donate Items</a>
             <a href="#create-account">Create an Account</a>
             <a href="#footer">Contact</a>
@@ -388,7 +398,7 @@
                         <label for="category">Category</label>
                         <select id="category" required>
                             <option value="">Select Category</option>
-                            <option>Clothing & Footwear</option>
+                            <option>Clothing &amp; Footwear</option>
                             <option>Children’s / Toys</option>
                             <option>Household Goods</option>
                             <option>Electronics (Working)</option>
