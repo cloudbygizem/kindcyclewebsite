@@ -6,26 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    /* ---------- BASIC RESET ---------- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f6f1ea;          /* nude / soft beige */
+      background: #f6f1ea;
       color: #2b2620;
       line-height: 1.5;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    /* ---------- LAYOUT ---------- */
     .container {
       max-width: 940px;
       margin: 0 auto;
       padding: 1.5rem 1rem 2.5rem;
     }
 
-    /* ---------- HEADER & NAV ---------- */
     header {
       border-bottom: 1px solid #e0d4c5;
       padding-bottom: 0.8rem;
@@ -36,43 +31,31 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
-    }
-
-    .logo {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
     }
 
     .logo span:first-child {
       font-size: 1.5rem;
       font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    .logo span:last-child {
-      font-size: 0.85rem;
-      color: #7b7269;
-    }
-
-    nav {
-      font-size: 0.9rem;
     }
 
     nav a {
       margin-left: 1rem;
-      padding-bottom: 0.2rem;
-      border-bottom: 1px solid transparent;
+      text-decoration: none;
+      color: #2b2620;
     }
 
-    nav a:hover {
-      border-color: #c7ac92;
-    }
+    nav a:hover { opacity: 0.7; }
 
-    /* ---------- HERO ---------- */
-    .hero {
-      padding: 1.4rem 0 1.8rem;
+    /* --- NEW: Hero Image --- */
+    .hero-image {
+      width: 100%;
+      height: 230px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      background-size: cover;
+      background-position: center;
+      background-image: url('https://images.unsplash.com/photo-1504813184591-01572f98c85f?auto=format&fit=crop&w=1200&q=60');
+      /* Ireland coast soft beige */
     }
 
     .hero-title {
@@ -80,59 +63,23 @@
       margin-bottom: 0.6rem;
     }
 
-    .hero-text {
-      max-width: 620px;
-      color: #5b5248;
-      margin-bottom: 1rem;
-    }
-
-    .tagline {
-      font-size: 0.9rem;
-      color: #8d7f72;
-      margin-bottom: 1rem;
-    }
+    p { color: #5b5248; }
 
     .btn {
       display: inline-block;
-      border-radius: 999px;
       padding: 0.55rem 1.3rem;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
       background: #8b6b5c;
       color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
     }
 
-    .btn:hover { opacity: 0.94; }
-
-    /* ---------- SECTIONS ---------- */
-    section {
-      margin-bottom: 1.8rem;
-    }
-
-    h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      font-size: 0.95rem;
-      color: #5b5248;
-    }
-
-    ul {
-      padding-left: 1.2rem;
-      color: #4b433a;
-      font-size: 0.95rem;
-    }
-
-    ul li + li { margin-top: 0.25rem; }
-
+    /* Cards */
     .card {
       background: #fdf9f4;
       border: 1px solid #e0d4c5;
-      border-radius: 8px;
       padding: 1rem;
+      border-radius: 8px;
       margin-top: 0.6rem;
     }
 
@@ -140,251 +87,171 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
-      margin-top: 0.8rem;
     }
 
-    /* ---------- FORM: DONATION ---------- */
-    .form-box {
-      background: #fff;
-      border-radius: 8px;
-      border: 1px solid #e0d4c5;
-      padding: 1rem;
-      margin-top: 0.8rem;
-    }
-
-    .form-row {
+    /* --- NEW: Small Donation Images --- */
+    .donation-images {
       display: flex;
-      flex-direction: column;
-      margin-bottom: 0.75rem;
+      gap: 1rem;
+      margin-top: 0.8rem;
     }
 
-    label {
-      font-size: 0.9rem;
-      margin-bottom: 0.25rem;
+    .don-img {
+      width: 48%;
+      height: 140px;
+      border-radius: 8px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #e0d4c5;
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    select,
-    textarea {
-      border: 1px solid #d1c3b4;
-      border-radius: 5px;
-      padding: 0.45rem;
-      font-size: 0.94rem;
-      font-family: inherit;
-      background: #fdfaf7;
+    .don-img1 {
+      background-image: url('https://images.unsplash.com/photo-1581091870675-1c4c31fd99af?auto=format&fit=crop&w=800&q=60');
     }
 
-    textarea { min-height: 70px; resize: vertical; }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: 1px solid #c7ac92;
-      border-color: #8b6b5c;
+    .don-img2 {
+      background-image: url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=800&q=60');
     }
 
-    .small-text {
-      font-size: 0.8rem;
-      color: #8d7f72;
+    /* Vision image */
+    .vision-image {
+      width: 100%;
+      height: 180px;
+      margin-top: 1rem;
+      border-radius: 8px;
+      background-image: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1100&q=60');
+      background-size: cover;
+      background-position: center;
     }
 
-    /* ---------- LOGIN / SIGNUP ---------- */
-    .auth h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.4rem;
-    }
+    .form-box { background: #ffffff; border: 1px solid #e0d4c5; padding: 1rem; border-radius: 8px; }
+    .form-row { display: flex; flex-direction: column; margin-bottom: 0.75rem; }
+    input, select, textarea { padding: 0.45rem; border: 1px solid #d1c3b4; border-radius: 5px; background: #fdfaf7; }
+    button.btn { border: none; cursor: pointer; }
 
-    .auth .form-box {
-      background: #fbf7f2;
-    }
-
-    /* ---------- FOOTER ---------- */
     footer {
+      margin-top: 2rem;
       border-top: 1px solid #e0d4c5;
       padding-top: 1rem;
-      margin-top: 1rem;
-      font-size: 0.85rem;
       color: #8d7f72;
-    }
-
-    @media (max-width: 600px) {
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav a { margin-left: 0.7rem; }
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
+<div class="container">
 
-    <!-- HEADER -->
-    <header>
-      <div class="top-bar">
-        <div class="logo">
-          <span>KindCycle</span>
-          <span>Passing on good things across Ireland</span>
-        </div>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#vision">Vision &amp; Mission</a>
-          <a href="#donate">Donate</a>
-          <a href="#account">Log in / Sign up</a>
-        </nav>
+  <!-- HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <span>KindCycle</span>
+        <span style="font-size:0.85rem; color:#7b7269;">Passing on good things across Ireland</span>
       </div>
-    </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1 class="hero-title">Give unused items a second life in your local Irish community.</h1>
-      <p class="hero-text">
-        KindCycle is a simple, entry-level charity project that connects people in Ireland who have
-        items they no longer use with neighbours who really need them – from Dublin to Galway,
-        Cork to Limerick.
-      </p>
-      <p class="tagline">Small acts of kindness, circling through our towns and villages.</p>
-      <a href="#donate" class="btn">Donate an item</a>
-    </section>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#vision">Vision</a>
+        <a href="#donate">Donate</a>
+        <a href="#account">Account</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- ABOUT / HOW IT WORKS -->
-    <section id="about">
-      <h2>How KindCycle works</h2>
+  <!-- HERO SECTION WITH IMAGE -->
+  <div class="hero-image"></div>
+
+  <h1 class="hero-title">Give unused items a second life in your Irish community.</h1>
+  <p>From Dublin’s coastal towns to Galway’s villages, KindCycle helps good-quality items find new meaning.</p>
+
+  <br>
+  <a href="#donate" class="btn">Donate now</a>
+
+  <!-- ABOUT -->
+  <section id="about" style="margin-top:2rem;">
+    <h2>How KindCycle Works</h2>
+    <div class="card">
+      <ul>
+        <li>You offer an item in good condition.</li>
+        <li>We match it with someone in need in Ireland.</li>
+        <li>You agree a collection point (libraries, community cafés, GAA clubs).</li>
+      </ul>
+
+      <!-- Donation-themed images -->
+      <div class="donation-images">
+        <div class="don-img don-img1"></div>
+        <div class="don-img don-img2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section id="vision" style="margin-top:2rem;">
+    <h2>Our Vision & Mission</h2>
+
+    <div class="vision-image"></div>
+
+    <div class="grid-2" style="margin-top:1rem;">
       <div class="card">
-        <ul>
-          <li>You offer a clean, usable item that you no longer need.</li>
-          <li>Our small volunteer team matches it with a local person or family in Ireland.</li>
-          <li>Together you agree a safe pick-up or drop-off location, such as a community centre or café.</li>
-        </ul>
+        <h3>Vision</h3>
+        <p>A kinder Ireland where unused items are recirculated with respect and care.</p>
       </div>
-    </section>
 
-    <!-- VISION & MISSION -->
-    <section id="vision">
-      <h2>Vision &amp; Mission</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Our vision</h3>
-          <p>
-            A kinder Ireland where good quality items stay in the cycle of use,
-            reducing waste and supporting people who are facing difficult times.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Our mission</h3>
-          <p>
-            To make it easy for anyone in Ireland to donate everyday items in a safe,
-            transparent and respectful way – starting with a simple online form and
-            community-based handovers.
-          </p>
-        </div>
+      <div class="card">
+        <h3>Mission</h3>
+        <p>To make giving effortless so items flow through Irish towns and support those who need them most.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- DONATION FORM -->
-    <section id="donate">
-      <h2>Donate an item</h2>
-      <p class="small-text">
-        Please complete the form below. This is a student project website, so the form is for demonstration only.
-      </p>
+  <!-- DONATION FORM -->
+  <section id="donate" style="margin-top:2rem;">
+    <h2>Donate an Item</h2>
+    <div class="form-box">
 
-      <div class="form-box">
-        <form action="#" method="post">
-          <div class="form-row">
-            <label for="name">Full name</label>
-            <input id="name" name="name" type="text" required>
-          </div>
-
-          <div class="form-row">
-            <label for="email">Email address</label>
-            <input id="email" name="email" type="email" required>
-          </div>
-
-          <div class="form-row">
-            <label for="location">Town / County in Ireland</label>
-            <input id="location" name="location" type="text" placeholder="e.g. Galway City, Co. Galway" required>
-          </div>
-
-          <div class="form-row">
-            <label for="category">Item category</label>
-            <select id="category" name="category" required>
-              <option value="">Select</option>
-              <option>Clothing</option>
-              <option>Children’s items / toys</option>
-              <option>Books / school supplies</option>
-              <option>Household items</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label for="description">Short description</label>
-            <textarea id="description" name="description"
-              placeholder="Colour, size, quantity, condition…" required></textarea>
-          </div>
-
-          <button type="submit" class="btn">Send donation offer</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- LOGIN / SIGN UP (VISUAL ONLY) -->
-    <section id="account" class="auth">
-      <h2>Log in / Create a new account</h2>
-      <p class="small-text">
-        These forms show how KindCycle could allow donors and partners to access their accounts
-        in a future version of the project.
-      </p>
-
-      <div class="grid-2" style="margin-top:0.8rem;">
-        <!-- LOGIN -->
-        <div class="form-box">
-          <h3>Log in</h3>
-          <form action="#" method="post">
-            <div class="form-row">
-              <label for="login-email">Email</label>
-              <input id="login-email" type="email" required>
-            </div>
-            <div class="form-row">
-              <label for="login-password">Password</label>
-              <input id="login-password" type="password" required>
-            </div>
-            <button type="submit" class="btn" style="margin-top:0.3rem;">Log in</button>
-          </form>
+      <form>
+        <div class="form-row">
+          <label>Full name</label>
+          <input required>
         </div>
 
-        <!-- SIGN UP -->
-        <div class="form-box">
-          <h3>Create a new account</h3>
-          <form action="#" method="post">
-            <div class="form-row">
-              <label for="signup-name">Full name</label>
-              <input id="signup-name" type="text" required>
-            </div>
-            <div class="form-row">
-              <label for="signup-email">Email</label>
-              <input id="signup-email" type="email" required>
-            </div>
-            <div class="form-row">
-              <label for="signup-password">Password</label>
-              <input id="signup-password" type="password" required>
-            </div>
-            <button type="submit" class="btn" style="margin-top:0.3rem;">Create account</button>
-          </form>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" required>
         </div>
-      </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-      Contact: kindcycle@example.com &nbsp;·&nbsp;
-      KindCycle – community donation project in Ireland.  
-      <br>© 2025 KindCycle – Student project website.
-    </footer>
+        <div class="form-row">
+          <label>Town / County in Ireland</label>
+          <input placeholder="e.g. Cork City, Co. Cork" required>
+        </div>
 
-  </div>
+        <div class="form-row">
+          <label>Category</label>
+          <select required>
+            <option>Clothing</option>
+            <option>Children’s items</option>
+            <option>Books / School</option>
+            <option>Household items</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>Description</label>
+          <textarea required></textarea>
+        </div>
+
+        <button class="btn" type="submit">Send donation offer</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 KindCycle — Community donation project inspired by Ireland.
+  </footer>
+
+</div>
 </body>
 </html>
