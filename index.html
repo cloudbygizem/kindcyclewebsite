@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KindCycle - Give New Life to Unused Treasures in Ireland</title>
     
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* --- Renk Paleti (Görselden Çıkarılan) --- */
+        /* --- Renk Paleti --- */
         :root {
-            --color-light-beige: #f5f5ee; /* Açık Bej Arka Plan */
-            --color-dark-green: #4C6F4C;   /* Koyu Orman Yeşili (Alt Kısım/Başlık) */
+            --color-light-beige: #f5f5ee;
+            --color-dark-green: #4C6F4C;
             --color-text-dark: #2b2620;
             --color-text-light: #5b5248;
-            --color-cta-donate: #557A55;   /* Bağış Butonu Yeşili */
-            --color-cta-discover: #D39B4E; /* Keşfet Butonu Turuncusu/Kahverengi */
+            --color-cta-donate: #557A55;
+            --color-cta-discover: #D39B4E;
             --color-border-light: #e0d4c5;
         }
 
-        /* --- Genel Stiller --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -32,7 +31,7 @@
         }
 
         h1, h2, h3 {
-            font-family: 'Merriweather', serif; 
+            font-family: 'Merriweather', serif;
             color: var(--color-text-dark);
         }
 
@@ -58,7 +57,7 @@
             text-align: center;
         }
 
-        /* --- 1. Header ve Navigasyon (Sticky) --- */
+        /* --- Header & Nav --- */
         .header {
             position: sticky;
             top: 0;
@@ -71,22 +70,37 @@
             border-bottom: 1px solid var(--color-border-light);
         }
         
-        .logo-container { margin-bottom: 15px; }
-        .logo-text { font-size: 1.8em; font-weight: 700; color: var(--color-dark-green); margin-top: 5px; }
-        .logo-bike { width: 50px; height: 30px; /* SVG yer tutucu*/ }
-        .nav { display: flex; gap: 20px; }
+        .logo-container { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-bike {
+            font-size: 1.6rem;
+        }
+
+        .logo-text {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-dark-green);
+            margin-top: 5px;
+        }
+
+        .nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         .nav a { color: var(--color-text-dark); font-weight: 600; padding: 5px 0; }
         .nav a:hover { color: var(--color-cta-discover); }
         
-        /* --- 2. Ana Bölüm (Hero Section) --- */
+        /* --- Hero Section --- */
         .hero-section {
-            background-image: url('https://images.unsplash.com/photo-1579737158309-847253509170?auto=format&fit=crop&q=80&w=1200'); /* Varsayılan Görsel */
+            background-image: url('https://images.unsplash.com/photo-1579737158309-847253509170?auto=format&fit=crop&w=1400&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
             padding: 100px 5%;
-            height: 600px;
+            height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -96,34 +110,46 @@
         .hero-section::before {
             content: '';
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background-color: rgba(0, 0, 0, 0.3); /* Hafif karartma */
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.35);
             z-index: 0;
         }
 
         .hero-content {
-            position: relative; z-index: 1; max-width: 900px;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
         }
 
         .hero-content h1 {
             color: white;
-            font-size: 2.8em;
-            margin-bottom: 50px;
+            font-size: 2.6em;
+            margin-bottom: 40px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
 
-        .cta-buttons { display: flex; gap: 30px; justify-content: center; }
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
         .btn {
-            padding: 15px 35px;
-            border-radius: 5px;
+            padding: 14px 32px;
+            border-radius: 999px;
             font-weight: 600;
             font-size: 1em;
-            transition: background 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            display: flex;
+            transition: background 0.3s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
         }
+
+        .btn:hover { transform: translateY(-1px); }
 
         .donate-btn {
             background-color: var(--color-cta-donate);
@@ -134,10 +160,8 @@
             background-color: var(--color-cta-discover);
             color: white;
         }
-
-        .btn i { margin-right: 10px; }
         
-        /* --- 3. 3 Özellik Kutusu (Alt Kısım) --- */
+        /* --- 3 Özellik Kutusu --- */
         .features-section {
             background-color: var(--color-dark-green);
             color: white;
@@ -146,25 +170,29 @@
             justify-content: space-around;
             text-align: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .feature-box { max-width: 300px; }
 
         .feature-icon {
-            font-size: 3em;
+            font-size: 2.2em;
             color: var(--color-cta-discover);
             margin-bottom: 15px;
             border: 2px solid var(--color-cta-discover);
             border-radius: 50%;
             padding: 15px;
             background: rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .feature-box h3 { color: white; margin-bottom: 5px; font-size: 1.4em; }
+        .feature-box h3 { color: white; margin-bottom: 5px; font-size: 1.3em; }
         
-        .feature-box p { font-size: 0.9em; font-style: italic; opacity: 0.8; }
+        .feature-box p { font-size: 0.9em; font-style: italic; opacity: 0.9; }
 
-        /* --- Yeni Bölümlerin Genel Stili --- */
+        /* --- Vision & Mission --- */
         .card-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -179,7 +207,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        /* --- Form Stilleri (Donation & Account) --- */
+        /* --- Formlar --- */
         .form-card {
             background: white;
             padding: 30px;
@@ -219,7 +247,7 @@
 
         .submit-btn:hover { background-color: var(--color-cta-donate); }
 
-        /* --- 6. Alt Bilgi (Footer) --- */
+        /* --- Footer --- */
         .footer {
             background-color: var(--color-dark-green);
             padding: 20px 5%;
@@ -232,13 +260,24 @@
             align-items: center;
             gap: 40px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
-        .social-icons a { color: white; font-size: 1.2em; margin: 0 10px; opacity: 0.8; }
+        .social-icons a { 
+            color: white; 
+            font-size: 1.2em; 
+            margin: 0 5px; 
+            opacity: 0.8; 
+        }
 
         .newsletter-form { display: flex; }
         
-        .newsletter-form input[type="email"] { border-radius: 3px 0 0 3px; width: 200px; }
+        .newsletter-form input[type="email"] { 
+            border-radius: 3px 0 0 3px; 
+            width: 200px;
+            border: none;
+            padding: 8px 10px;
+        }
 
         .newsletter-form button {
             padding: 8px 15px;
@@ -250,14 +289,26 @@
             font-weight: 600;
         }
 
-        .powered-by { color: rgba(255, 255, 255, 0.6); font-size: 0.8em; margin-top: 20px; }
+        .powered-by { 
+            color: rgba(255, 255, 255, 0.6); 
+            font-size: 0.8em; 
+            margin-top: 20px; 
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero-section { height: 460px; padding: 80px 5%; }
+            .hero-content h1 { font-size: 2rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header class="header">
         <div class="logo-container">
-            <svg class="logo-bike" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='#4C6F4C' d='M504 200h-80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h3.4l-31 66c-13.8 29.5-44.5 49-78.4 49H264c-12.3 0-24.3-3.1-34.7-8.7L184 340.9V432c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16V307.7c0-20.9 16.5-38.3 37.3-39.7l93.7-6.2c16.5-1.1 32.8-5.7 47.7-13.5l10.9-5.7c17.5-9.2 27.2-28.7 23.3-48.4C417.4 121.7 392.6 96 362 96h-17.6l10.2 20.4c9.1 18.3 12.3 38.6 9.4 58.6-4.9 33.6-28.9 61.3-60.6 74.3L254.8 301c-6.2 3-12.6 5.8-19.2 8.3L160 336H88c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h11.4c-22.3 43.1-68.9 72-121.4 72C14.3 472 0 457.7 0 440s14.3-32 32-32c32.3 0 61.2-15.3 80.5-38.6l19.8-24.2c.4-.5.8-1 1.2-1.5 13.9-18.4 20.5-40.4 19.3-62.8 0 0 0-.1 0-.1 0-.3.1-.6.1-.9V304c0-26.5 21.5-48 48-48h54.8l20.8-10.4c17.7-8.8 30.6-25.5 35.8-45l7.9-29.6c.1-.4.3-.7.4-1.1 4-15.2 3.6-30.9-1.3-45.7C378.8 112.5 368.5 96 352 96h-64V64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32h-64c-22.1 0-40 17.9-40 40v16c0 22.1 17.9 40 40 40h64v32h-43.4c-11.8 0-23.2 2.7-33.5 7.8L96 284.4V256c0-8.8-7.2-16-16-16H0c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v107.5c0 17.7 14.3 32 32 32h128c17.7 0 32-14.3 32-32V304c0-8.8-7.2-16-16-16h-42.9l-11.5-5.7c-9.2-4.6-19.1-7-29-7H224c-17.7 0-32-14.3-32-32V176c0-17.7 14.3-32 32-32h128c17.7 0 32 14.3 32 32v16h80c8.8 0 16-7.2 16-16V216c0-8.8-7.2-16-16-16z'/></svg>
+            <div class="logo-bike">🚲</div>
             <div class="logo-text">KindCycle</div>
         </div>
         <nav class="nav">
@@ -265,63 +316,78 @@
             <a href="#vision-mission">Vision/Mission</a>
             <a href="#donate-form">Donate Items</a>
             <a href="#create-account">Create an Account</a>
-            <a href="#">Contact</a>
+            <a href="#footer">Contact</a>
         </nav>
     </header>
 
+    <!-- HERO -->
     <main id="home" class="hero-section">
         <div class="hero-content">
             <h1>Give New Life to Unused Treasures in Ireland</h1>
             <div class="cta-buttons">
-                <a href="#donate-form" class="btn donate-btn"><i class="fas fa-gift"></i> Donate Your Items</a>
-                <a href="#" class="btn discover-btn"><i class="fas fa-search"></i> Discover Local Causes</a>
+                <a href="#donate-form" class="btn donate-btn">🎁 Donate Your Items</a>
+                <a href="#vision-mission" class="btn discover-btn">📍 Discover Local Causes</a>
             </div>
         </div>
     </main>
 
+    <!-- FEATURES -->
     <section class="features-section">
         <div class="feature-box">
-            <i class="fas fa-box feature-icon"></i>
+            <div class="feature-icon">📦</div>
             <h3>Reduce Waste</h3>
-            <p>Erato a uper con mestin ae arlamd</p>
+            <p>Keep quality items out of landfills by passing them to someone who can use them.</p>
         </div>
         <div class="feature-box">
-            <i class="fas fa-heart feature-icon"></i>
+            <div class="feature-icon">🤝</div>
             <h3>Support Community</h3>
-            <p>Tn oni la dessure the ploise tor trertw leclmp</p>
+            <p>Connect with local causes and neighbours in towns and villages across Ireland.</p>
         </div>
         <div class="feature-box">
-            <i class="fas fa-map-marker-alt feature-icon"></i>
+            <div class="feature-icon">😊</div>
             <h3>Share Joy</h3>
-            <p>Arousse lor scaad to murtald secllue</p>
+            <p>Turn unused things into moments of joy for another family.</p>
         </div>
     </section>
 
     <div class="container">
+        <!-- VISION & MISSION -->
         <section id="vision-mission">
             <h2>Our Vision and Mission</h2>
             <div class="card-grid">
                 <div class="info-card">
-                    <h3><i class="fas fa-eye" style="color: var(--color-dark-green);"></i> Our Vision (Gelecek Vizyonumuz)</h3>
-                    <p style="color:var(--color-text-light);">To foster a culture of mindful consumption across Ireland, where every unused item is seen as a potential resource, not waste, creating a self-sustaining circle of giving.</p>
+                    <h3>Our Vision</h3>
+                    <p style="color:var(--color-text-light);">
+                        To foster a culture of mindful consumption across Ireland, where every unused item is seen
+                        as a potential resource, not waste, creating a self-sustaining circle of giving.
+                    </p>
                 </div>
                 <div class="info-card">
-                    <h3><i class="fas fa-bullseye" style="color: var(--color-cta-discover);"></i> Our Mission (Temel Görevimiz)</h3>
-                    <p style="color:var(--color-text-light);">To provide a trustworthy, easy-to-use platform that efficiently connects generous donors with verified local charities and families in need throughout every Irish county.</p>
+                    <h3>Our Mission</h3>
+                    <p style="color:var(--color-text-light);">
+                        To provide a trustworthy, easy-to-use platform that efficiently connects generous donors
+                        with verified local charities and families in need throughout every Irish county.
+                    </p>
                 </div>
             </div>
         </section>
 
+        <!-- DONATE FORM -->
         <section id="donate-form">
-            <h2>Donate Your Items (Bağış Formu)</h2>
-            <p style="text-align: center; color:var(--color-text-light);">Thank you for helping us keep kindness cycling! Please fill in the details of the item you wish to donate.</p>
+            <h2>Donate Your Items</h2>
+            <p style="text-align: center; color:var(--color-text-light);">
+                Thank you for helping us keep kindness cycling! Please fill in the details of the item you wish to donate.
+            </p>
             
             <div class="form-card">
                 <form>
-                    <div class="form-row"><label for="item-title">Item Title (Eşya Başlığı)</label><input id="item-title" required placeholder="e.g. Children's Bicycle, Box of Books"></div>
+                    <div class="form-row">
+                        <label for="item-title">Item Title</label>
+                        <input id="item-title" required placeholder="e.g. Children's Bicycle, Box of Books">
+                    </div>
                     
                     <div class="form-row">
-                        <label for="category">Category (Kategori)</label>
+                        <label for="category">Category</label>
                         <select id="category" required>
                             <option value="">Select Category</option>
                             <option>Clothing & Footwear</option>
@@ -332,21 +398,27 @@
                         </select>
                     </div>
 
-                    <div class="form-row"><label for="location">Your Location (County/Town)</label><input id="location" required placeholder="e.g. County Cork, Dublin 4"></div>
+                    <div class="form-row">
+                        <label for="location">Your Location (County/Town)</label>
+                        <input id="location" required placeholder="e.g. County Cork, Dublin 4">
+                    </div>
 
                     <div class="form-row">
-                        <label for="description">Detailed Description (Durumu ve Boyutu)</label>
+                        <label for="description">Detailed Description</label>
                         <textarea id="description" required rows="4" placeholder="e.g. Good condition, size M, needs light cleaning."></textarea>
                     </div>
 
-                    <button class="btn submit-btn" type="submit">Submit Donation Offer <i class="fas fa-paper-plane"></i></button>
+                    <button class="submit-btn" type="submit">Submit Donation Offer</button>
                 </form>
             </div>
         </section>
 
+        <!-- CREATE ACCOUNT -->
         <section id="create-account">
-            <h2>Create Your KindCycle Account (Hesap Oluştur)</h2>
-            <p style="text-align: center; color:var(--color-text-light);">Join the KindCycle community in just a few steps to manage your donations and track your impact.</p>
+            <h2>Create Your KindCycle Account</h2>
+            <p style="text-align: center; color:var(--color-text-light);">
+                Join the KindCycle community in just a few steps to manage your donations and track your impact.
+            </p>
             
             <div class="form-card">
                 <form>
@@ -356,21 +428,23 @@
                     <div class="form-row"><label for="confirm-password">Confirm Password</label><input type="password" id="confirm-password" required></div>
                     <div class="form-row"><label for="reg-location">Primary Location (County)</label><input id="reg-location" placeholder="e.g. County Galway" required></div>
                     
-                    <button class="btn submit-btn" type="submit">Create Account <i class="fas fa-user-plus"></i></button>
+                    <button class="submit-btn" type="submit">Create Account</button>
                 </form>
             </div>
         </section>
     </div>
 
-    <footer class="footer">
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
         <div class="social-newsletter">
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#">f</a>
+                <a href="#">t</a>
+                <a href="#">ig</a>
             </div>
             <form class="newsletter-form">
                 <input type="email" placeholder="Newsletter" required>
-                <button type="submit">Youp</button>
+                <button type="submit">Join</button>
             </form>
         </div>
         <p class="powered-by">Powered by Irish Spirit</p>
